@@ -1,5 +1,46 @@
-extends layout
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Rating App</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-block content
-  h1= title
-  p Welcome to #{title}
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="/stylesheets/style.css">
+
+	<script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+	<h1>A node.js voting game - Who can actually play golf?</h1>
+
+	<div id="image">
+		<img src="/images/<%= imageToRender %>" width="300px">
+	</div>
+
+	<div class="button-holder">
+		<div class="button-form">
+			<form class="vote-button" action="electric" method="post">
+				<input type="hidden" name="image" value="<%= imageToRender %>">
+				<input type="submit" name="submit" class="btn btn-info" value="Golfer">
+			</form>
+		</div>
+	</div>
+	<div class="button-holder">
+		<div class="button-form">
+			<form class="vote-button" action="electric" method="post">
+				<input type="hidden" name="image" value="<%= imageToRender %>">
+				<input type="submit" name="submit" class="btn btn-info" value="Ladie's Tees">
+			</form>
+		</div>
+	</div>
+</body>
+</html>
+
+
+

@@ -1,0 +1,21 @@
+
+<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css">
+
+<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+
+<a href="/resetUserVotes"><button class="btn btn-primary">Reset my votes</button></a>
+
+<table class="table">
+	<tr>
+		<th>Votes</th>
+		<th>Golfer</th>
+	</tr>
+	<% for(var i=0; i<theStandings.length; i++){ %>
+		<tr>
+			<td><%= theStandings[i].totalVotes; %></td>
+			<td><img src="/images/<%= theStandings[i].imgSrc; %>" width="300px;"></td>
+		</tr>
+	<% } %>
+
+</table>
+
