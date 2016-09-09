@@ -1,5 +1,9 @@
 var express = require('express');
 var router = express.Router();
+var multer = require('multer');
+var upload = multer({dest: 'public/images'})
+var type = upload.single('fileUpLoaded')
+var fs = require('fs');
 
 // 1. Connet to MongoDB.
 var mongodb = require('mongodb');
@@ -7,7 +11,7 @@ var mongoClient = mongodb.MongoClient;
 var mongoUrl = 'mongodb://localhost:27017/electric'
 var db; //Global so all of our routes have access to the db connection
 
-mongoClient.connect(mongoUrl, function(error, database){
+mongoClient.connect(mongoUrl, (error, database) => {
 	if(error){
 		console.log(error) //Print out the error because there is one
 	}else{
@@ -16,8 +20,24 @@ mongoClient.connect(mongoUrl, function(error, database){
 	}
 })
 
+router.post('/form_submit', type, (req, res, next) => {
+	// res.json(req.file);
+	var tmp_path = req.file.path;
+	var target_path = 'public/images/' + req.file.originalname;
+	fs.readFile(tmp_path, (error, data) => {
+		fs.writeFile(target_path, data, (error) => {
+			res.json('File Uploaded to ' + target_path);
+		})
+	})
+})
+
+
+router.get('/form_submit', (req, res, next) => {
+	res.render('form_submit', {})
+});
+
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', (req, res, next) => {
 
 	var userIP = req.ip;
 	// 5. Find all the photos the user has voted on and load an array up with them.
