@@ -27,6 +27,9 @@ router.post('/form_submit', type, (req, res, next) => {
 	fs.readFile(tmp_path, (error, data) => {
 		fs.writeFile(target_path, data, (error) => {
 			res.json('File Uploaded to ' + target_path);
+
+			// db.insert
+
 		})
 	})
 })
